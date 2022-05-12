@@ -160,3 +160,11 @@ INSERT INTO fixtures(MatchNumber,hometeam,awayteam,venue,teamWom,teamLost) VALUE
 
 INSERT INTO fixtures(MatchNumber,hometeam,awayteam,venue,teamWom,teamLost) VALUES (56,'CSK','PK','Chennai','CSK','PK');
 
+
+select * from fixtures where hometeam = 'RCB';
+
+select teamlost as Teams_that_lost from fixtures where venue = 'Kolkata';
+
+insert into points (team_name, nowins, noloss, points)
+    select t.team_name, count(f.teamwon), count(f.noloss), (2*count(f.teamwon)) from Team_Details t, fixtures f where t.team_name='MI' and (  t.team_name= f.hometeam, or t.team_name = f.awayteam );
+
